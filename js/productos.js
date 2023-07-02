@@ -1,70 +1,70 @@
-const {createApp} = Vue 
+const { createApp } = Vue
 createApp({
-    data(){
-        return{
+    data() {
+        return {
             productos: [],
-            url: "http://127.0.0.1:5000/productos",
+            url: "http://santiagol.pythonanywhere.com/productos",
             cargando: true,
             error: false,
 
-            id:0,
-            nombre:"",
-            imagen:"",
-            stock:0,
-            precio:0,
+            id: 0,
+            nombre: "",
+            imagen: "",
+            stock: 0,
+            precio: 0,
 
         }
-        
+
     },
 
-    methods:{
-        fetchData(url){
+    methods: {
+        fetchData(url) {
             fetch(this.url)
-            .then(response => response.json())
-            .then(data => {
-                this.productos = data;
-                this.cargando = false;
-            })
-            .catch(err =>{
-                console.log(err);
-                this.erro = true;
-            })
+                .then(response => response.json())
+                .then(data => {
+                    this.productos = data;
+                    this.cargando = false;
+                })
+                .catch(err => {
+                    console.log(err);
+                    this.erro = true;
+                })
         },
 
-        eliminar(producto){
-            const url = "http://santiagol.pythonanywhere.com/productos" + producto;
+        eliminar(producto) {
+            const url = "http://santiagol.pythonanywhere.com/productos/" + producto;
             let options = {
                 method: "DELETE",
             }
 
             fetch(url, options)
-            .then(response => response.json)
-            .then(data => {
-                location.reload();
-            })
-            .catch(err =>{
-                console.error(err)
-            })
+                .then(response => response.json)
+                .then(data => {
+                    location.reload();
+                })
+                .catch(err => {
+                    console.error(err);
+                })
         },
-        grabar(){
+        grabar() {
             let producto = {
-                nombre:this.nombre,
-                precio:this.precio,
-                stock:this.stock,
-                imagen:this.imagen,
+                nombre: this.nombre,
+                precio: this.precio,
+                stock: this.stock,
+                imagen: this.imagen,
             }
             var options = {
-                body:JSON.stringify(producto),
-                method :"POST",
-                headers:{"Content-Type": "applicattion/json"},
+                body: JSON.stringify(producto),
+                method: "POST",
+                headers: { "Content-Type": "applicattion/json" },
                 redirect: "follow"
             }
             fetch(this.url, options)
-                .then(function (){
+                .then(function () {
                     alert("Registro grabado")
                     window.location.href = "productos.html"
                 })
-                .catch(err =>{
+                .catch(err => {
                     console.error(err);
                     alert("Error al grabar")
                 })
@@ -74,7 +74,7 @@ createApp({
     },
 
 
-    created(){
+    created() {
 
         this.fetchData(this.url);
 
