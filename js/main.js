@@ -14,10 +14,13 @@ document.getElementById("header").innerHTML = `<nav class="navbar navbar-expand-
         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Crud</a>
         <div class="dropdown-menu" aria-labelledby="dropdownId">
           <a class="dropdown-item" href="productos.html">Productos</a>
-          <a class="dropdown-item" href="#">#</a>
         </div>
       </li>
     </ul>
   </div>
 </div>
 </nav>`
+
+document.getElementById("footer").innerHTML =`<section class="footer">
+<h4>Gaming4Gamers&reg; es una marca registrada. Todos los derechos reservados-2023</h4>
+</section>`

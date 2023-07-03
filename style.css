@@ -54,5 +54,90 @@ h1{
 
 }
 
+#index{
+    background: linear-gradient(to right, #141414, #2a2436, #272747);
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .presentacion{
+    display:flex;
+    justify-content: center;
+  }
+  .presentacion h1{
+    color: #fff;
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 4px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, #FFD700, #FF1493, #00FF00);
+    animation: border-gradient 15s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes border-gradient {
+    0% {
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to right, #FFD700, #FF1493, #00FF00);
+    }
+    50% {
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to right, #00FF00, #FFD700, #FF1493);
+    }
+    100% {
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to right, #FF1493, #00FF00, #FFD700);
+    }
+  }
+
+.cuerpo{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.card-img-top{
+    height: 250px;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    margin-top:110px;
+
+}
+.footer h4{
+    color: #fff;
+    font-size: .8rem;
+
+}
+
 
 
