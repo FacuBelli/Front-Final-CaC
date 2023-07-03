@@ -1,96 +1,120 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Productos</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-  <title>Productos</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <body id="productos">
+    <header id="header"></header>
 
-</head>
+    <main>
+      <div id="app" class="container">
+        <h1>Catalogo</h1>
 
-<body id="productos">
-  <header id="header"></header>
-
-  <main>
-    <div id="app" class="container">
-      <h1>Catalogo</h1>
-      
-      
-      
-      <section v-if="error">
-        <p>Lo sentimos, no podemos mostrar los datos en este momento</p>
-      </section>
-
-      <section v-else>
-        <section v-if="cargando">
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="spinner-border text-primary spinner-border-sm"
-              role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
-          </div>
-
+        <section v-if="error">
+          <p>Lo sentimos, no podemos mostrar los datos en este momento</p>
         </section>
+
         <section v-else>
-          
-          <div v-else class="table-responsive" style = "margin-top:1rem">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col" id="columnas">Id</th>
-                  <th scope="col" id="columnas">Nombre</th>
-                  <th scope="col" id="columnas">Precio</th>
-                  <th scope="col" id="columnas">Stock</th>
-                  <th scope="col" id="columnas">Imagen</th>
-                  <th scope="col" id="columnas">Opciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="" v-for = "p in productos"> <!--La palabra despues del in es la que defini en vue-->
-                  <td scope="row" id="filas">{{p.id}}</td>
-                  <td id="filas">{{p.nombre}}</td>
-                  <td id="filas">{{p.precio}}</td>
-                  <td id="filas">{{p.stock}}</td>
-                  <td id="filas">
-                    <img :src="p.imagen" alt="p.nombre" width="80" height="80">
-                  </td>
-                  <td id="filas">
-                    <a href="producto_editar.html" class="btn btn-primary" id="opciones">Editar</a>
-                    <button type="button" class="btn btn-danger" v-on:click="eliminar(p.id)" id="opciones">Eliminar</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div id="agregar">
-            <a href="producto_nuevo.html" class="btn btn-success">Agregar Producto</a>
-          </div>
-          
+          <section v-if="cargando">
+            <div class="d-flex justify-content-center align-items-center">
+              <div
+                class="spinner-border text-primary spinner-border-sm"
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </section>
+          <section v-else>
+            <div v-else class="table-responsive" style="margin-top: 1rem">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col" id="columnas">Id</th>
+                    <th scope="col" id="columnas">Nombre</th>
+                    <th scope="col" id="columnas">Precio</th>
+                    <th scope="col" id="columnas">Stock</th>
+                    <th scope="col" id="columnas">Imagen</th>
+                    <th scope="col" id="columnas">Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="" v-for="p in productos">
+                    <!--La palabra despues del in es la que defini en vue-->
+                    <td scope="row" id="filas">{{p.id}}</td>
+                    <td id="filas">{{p.nombre}}</td>
+                    <td id="filas">{{p.precio}}</td>
+                    <td id="filas">{{p.stock}}</td>
+                    <td id="filas">
+                      <img
+                        :src="p.imagen"
+                        alt="p.nombre"
+                        width="80"
+                        height="80"
+                      />
+                    </td>
+                    <td id="filas">
+                      <a
+                        :href="'producto_editar.html?id='+p.id+'&nombre='+p.nombre+'&precio='+p.precio+'&stock='+p.stock+'&imagen='+p.imagen"
+                        class="btn btn-primary"
+                        id="opciones"
+                        >Editar</a
+                      >
+                      <button
+                        type="button"
+                        class="btn btn-danger"
+                        v-on:click="eliminar(p.id)"
+                        id="opciones"
+                      >
+                        Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="agregar">
+              <a href="producto_nuevo.html" class="btn btn-success"
+                >Agregar Producto</a
+              >
+            </div>
+          </section>
         </section>
-        
-      </section>
-    </div>
-  </main>
+      </div>
+    </main>
 
-  <footer id="footer"></footer>
+    <footer id="footer"></footer>
 
-  <!-- Bootstrap JavaScript Libraries -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-  </script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-  </script>
-  
-  <script src="./js/main.js"></script>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="./js/productos.js"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
 
+    <script src="./js/main.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./js/productos.js"></script>
+  </body>
 </html>

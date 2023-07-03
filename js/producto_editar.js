@@ -1,5 +1,5 @@
 console.log(location.search); // Lee los argumentos pasados a este formulario
-// var id = location.search.substring(4); // Obtén solo el valor del parámetro de búsqueda sin el signo de interrogación y el igual
+//var id = location.search.substring(1).split('&'); // Obtén solo el valor del parámetro de búsqueda sin el signo de interrogación y el igual
 var searchParams = new URLSearchParams(window.location.search);
 var id = searchParams.get('id');
 console.log(id);
@@ -45,7 +45,6 @@ createApp({
                 headers: { 'Content-Type': 'application/json' },
                 redirect: 'follow',
             };
-            // fetch(this.url, options)
             fetch(this.url, options)
                 .then(() => {
                     alert("Registro modificado");
